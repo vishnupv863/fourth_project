@@ -1,9 +1,13 @@
 import express from 'express';
+import connectDB from './lib/db.js';
 
 const app = express();
 
 // declaring port number 
 const PORT = 3000;
+
+//declaring data base connection function
+connectDB();
 
 // code for home page
 app.get('/', (req,res) => {
