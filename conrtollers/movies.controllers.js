@@ -40,7 +40,25 @@ export const movieCreate = async (req, res) => {
 }
 
 // for updating movie list
-export const movieUpdate = async (req, res) => { }
+export const movieUpdate = async (req, res) => {
+    try {
+        const updatedMovie = await Movie.findOneAndUpdate(
+            {
+                _id : req.params.id
+            },
+            {
+                title : req.body.title,
+                description : req.body.description
+            },
+            {
+                new : true
+            }
+        );
+        return res.status(200).json(updatedMovie);
+    } catch (error) {
+        return res.status(400).json({ message: error.message })
+    }
+}
 
 // for deleting movies
 export const deleteMovies = async (req, res) => { }
