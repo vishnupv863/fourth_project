@@ -15,6 +15,11 @@ app.get('/', (req,res) => {
     res.send('This is home page!!!!!');
 });
 
+
+// json middileware
+app.use(express.json());
+
+
 // movie middileware
 app.use('/movies', movieRouter);
 
